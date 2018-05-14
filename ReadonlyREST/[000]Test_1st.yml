@@ -1,0 +1,65 @@
+readonlyrest:
+    enable: true
+    response_if_req_forbidden: Forbidden by ReadonlyREST ES plugin
+    access_control_rules:
+    
+    
+    ## Guest can only read.
+
+      - name: "guest-Kibana-Read_Only"
+        proxy_auth: ["guest"]
+        indices: [".kibana_guest"]
+        actions: ["indices:data/read/*"]
+        kibana_access: ro_strict
+        verbosity: error
+
+      - name: "proxy auth - guest"
+        proxy_auth: ["guest"]
+        actions: ["indices:data/read/*","indices:admin/mappings/*"]
+        indices: ["guest*"]
+        kibana_access: ro_strict
+        verbosity: error
+    
+      - name: ".kibana allow all."
+        proxy_auth: ["*"]
+        indices: [".kibana"]
+        actions: ["indices:data/read/*"]
+        kibana_access: rw
+        verbosity: error
+
+
+    ## sales_dept.
+
+      - name: "proxy auth - sales_dept"
+        proxy_auth: ["sales_dept"]
+        indices: [".kibana_sales_dept", "sales_dept*"]
+        actions: ["*"]
+        verbosity: error
+   
+
+
+    ## Administrator: all permissions allowed.
+    
+      - name: "admin"
+        proxy_auth: ["admin"]
+        indices: ["*", ".kibana_*"]
+        actions: ["*"]
+        verbosity: error
+
+      - name: "readall"
+        proxy_auth: ["readall"]
+        indices: ["*", ".kibana_*"]
+        actions: ["indices:data/read/*"]
+        verbosity: error
+    
+    ## System: Logstash, Kibana and Localhost.
+
+      - name: "::LOGSTASH::"
+        auth_key: logstash:logstash
+        actions: ["indices:data/read/*","indices:data/write/*","indices:admin/template/*","indices:admin/create"]
+        indices: ["*"]
+        verbosity: error
+    
+      - name: "::KIBANA-SRV::"
+        auth_key: kibana:kibana
+        verbosity: error
