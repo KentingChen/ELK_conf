@@ -1,0 +1,10 @@
+server.port: 5601
+server.host: localhost
+elasticsearch.url: http://localhost:19200
+elasticsearch.username: "kibana"
+elasticsearch.password: "kibana"
+elasticsearch.requestHeadersWhitelist: [ cookie, authorization, x-forwarded-user ]
+own_home.proxy_user_header: x-forwarded-user
+own_home.session.secretkey: "00001111222233334444555566667777"
+own_home.session.isSecure: false
+own_home.local.groups: [guest, sales_dept, admin]
