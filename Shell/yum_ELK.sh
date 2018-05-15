@@ -40,6 +40,9 @@ firewall-cmd --add-port=$ES_port/tcp --permanent
 firewall-cmd --add-port=$K_port/tcp --permanent
 firewall-cmd --reload
 
+## SELinux Settings; Allow reverse-proxy connect to Kibana
+# semanage port -a -t http_port_t -p tcp $K_port
+
 # YML Settings
 sed -i s/'#network.host: 192.168.0.1'/"network.host: $ES_host"/g $ES_yml_path
 sed -i s/'#http.port: 9200'/"http.port: $ES_port"/g $ES_yml_path
