@@ -2,12 +2,12 @@
 
 ## YUM 
 # Basic
-yum install nc
-yum install curl
-yum install wget
+yum -y install nc
+yum -y install curl
+yum -y install wget
 
 # For Pythons
-yum install python-pip
+yum -y install python-pip
 pip install --upgrade pip
 pip install elasticsearch
 
