@@ -20,4 +20,9 @@ rpm -ivh https://artifacts.elastic.co/downloads/kibana/kibana-5.6.4-x86_64.rpm
 #autorefresh=1
 #type=rpm-md
 #EOL
+
+
+# yum -y install elasticsearch
+# yum -y install logstash
+# yum -y install kibana
 #####
