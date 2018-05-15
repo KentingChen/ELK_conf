@@ -1,5 +1,5 @@
 # For ELK
-yum install java
+yum -y install java
 
 
 # ELK 5.6.4
