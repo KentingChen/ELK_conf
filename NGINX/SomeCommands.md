@@ -3,8 +3,9 @@
 htpasswd -c ./admin.htpasswd admin
 ```
 
-### To find htpasswd utility
+### To Install/Find htpasswd utility
 ```
+yum install httpd-tools 
 yum provides \*bin/htpasswd
 ```
 
