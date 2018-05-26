@@ -15,3 +15,4 @@ pip install elasticsearch
 # Settings
 timedatectl set-timezone "Asia/Taipei"
 hwclock -w
+
