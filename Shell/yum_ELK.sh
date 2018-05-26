@@ -47,7 +47,7 @@ firewall-cmd --reload
 sed -i s/'#network.host: 192.168.0.1'/"network.host: $ES_host"/g $ES_yml_path
 sed -i s/'#http.port: 9200'/"http.port: $ES_port"/g $ES_yml_path
 
-sed -i s/'#server.port: 5601'/"server.port: $Kport"/g $K_yml_path
+sed -i s/'#server.port: 5601'/"server.port: $K_port"/g $K_yml_path
 sed -i s/'#server.host: "localhost"'/"server.host: $K_host"/g $K_yml_path
 sed -i s/"#elasticsearch.url: \"http:\/\/localhost:9200\"/elasticsearch.url: \"http:\/\/$ES_host:$ES_port\""/g $K_yml_path
 
