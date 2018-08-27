@@ -30,13 +30,14 @@ def fetch_yaml_to_dict():
         for line in f:
             stripped_line = line.strip()
             if not stripped_line.startswith("#"):
-                li = stripped_line.split(":")
-                key = li[0]
-                value = li[1].strip()
-                try:
-                    keep_dict[key] = int(value)
-                except TypeError:
-                    sys.exit("Something is WRONG in the yaml file.")
+                if stripped_line != "":
+                    li = stripped_line.split(":")
+                    key = li[0]
+                    value = li[1].strip()
+                    try:
+                        keep_dict[key] = int(value)
+                    except TypeError:
+                        sys.exit("Something is WRONG in the yaml file.")
     return keep_dict
 
 
