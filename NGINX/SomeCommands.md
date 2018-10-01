@@ -12,5 +12,6 @@ yum provides \*bin/htpasswd
 
 ### SELinux: Allow reverse-proxy connect to Kibana
 ```
+yum install policycoreutils-python  # to install package
 semanage port -a -t http_port_t -p tcp 5601 # Kibana port
 ```
